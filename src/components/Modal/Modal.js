@@ -9,12 +9,12 @@ import {
 } from "./modal.styled";
 import { ButtonClose } from "./modalContent.styled";
 
-const Modal = ({ isShowing, hide, children }) =>
-  isShowing
+const Modal = ({ isShowing, hide, children }) => {
+  return isShowing
     ? ReactDOM.createPortal(
         <React.Fragment>
           <ModalOverlay />
-          <ModalWrapper aria-modal aria-hidden tabIndex={-1} role="dialog">
+          <ModalWrapper onClick={hide}>
             <ModalContainer>
               <ButtonClose
                 type="button"
@@ -32,5 +32,6 @@ const Modal = ({ isShowing, hide, children }) =>
         document.body
       )
     : null;
+};
 
 export default Modal;
